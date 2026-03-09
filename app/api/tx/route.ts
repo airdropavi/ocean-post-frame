@@ -1,23 +1,15 @@
-import { FrameTransactionResponse } from '@coinbase/onchainkit/frame';
 import { NextResponse } from 'next/server';
 
-export async function POST(): Promise<NextResponse<FrameTransactionResponse>> {
+export async function POST() {
   return NextResponse.json({
-    chainId: 'eip155:8453', // Base Mainnet
-    method: 'eth_sendTransaction',
+    chainId: "eip155:8453", // Base Mainnet
+    method: "eth_sendTransaction",
     params: {
-      abi: [
-        {
-          "inputs": [{ "internalType": "string", "name": "_message", "type": "string" }],
-          "name": "dropMessage",
-          "outputs": [],
-          "stateMutability": "payable",
-          "type": "function"
-        }
-      ],
-      to: '0xf24aa53498f63216dd38d67702c5198f93cf00e7',
-      data: '0x', // Boş tırnak yerine 0x yazdık, hata burada çözülüyor
-      value: '100000000000000', // 0.0001 ETH
+      abi: [], // Kontrat ABI buraya gelecek
+      to: "0xC52CafC7f2BC2eA38e5A10f7F096C0Dd61E7F6c7", // Senin cüzdanın
+      data: "0x", // Fonksiyon çağrısı verisi
+      value: "100000000000000", // 0.0001 ETH
     },
+    description: "Dropping a digital bottle into the onchain ocean... 🌊",
   });
 }
